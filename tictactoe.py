@@ -54,5 +54,7 @@ while True:
             sys.exit()
     
     pygame.display.update()
-    
-    
+
+"Verify is the new functions work"  
+
+ 
