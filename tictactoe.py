@@ -80,7 +80,7 @@ def check_win(player):
         return True
 
     # desc diagonal win check
-    if board[0][0] == player and board[1][1] == player and board[2][0] == player:
+    if board[0][0] == player and board[1][1] == player and board[2][2] == player:
         draw_desc_diagonal(player)
         return True
     
@@ -117,7 +117,11 @@ def draw_desc_diagonal(player):
     pygame.draw.line( screen, color, (15, 15), (WIDTH - 15, HEIGHT - 15), 15)
 
 def restart():
-    pass
+    screen.fill( BG_COLOR)
+    draw_lines()
+    for row in range(BOARD_ROWS):
+        for col in range(BOARD_COLS):
+            board[row][col] = 0
 
 draw_lines()
 
@@ -152,6 +156,12 @@ while True:
                     player = 1
 
                 draw_figures()
+        
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                restart()
+                game_over = False
+                player = 1 
 
     
     # Update the display always
